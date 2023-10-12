@@ -1,0 +1,273 @@
+Vector
+
+
+1.	Find the elements of a vector that are not in another vector in R
+
+
+vector1 <- c(1, 2, 3, 4, 5)
+vector2 <- c(3, 4, 5, 6, 7)
+elements_not_in_vector2 <- vector1[!(vector1 %in% vector2)]
+print(elements_not_in_vector2)
+
+
+2.	 Write a R program to take input from the user (name and age) and display the values. Also print the version of R installation.
+
+name = readline("Enter name:")
+age=as.integer(readline("Enter age: "))
+print(paste(name))
+print(paste(age))
+print(paste(R.version.string))
+
+
+3.	Write a R program to create a sequence of numbers from 20 to 50 and find the mean of numbers from 20 to 60 and sum of numbers from 51 to 91.
+
+seq= 20:50
+meannum=mean(20:60)
+sumofnum=sum(51:91)
+cat(seq)
+cat(meannum)
+cat(sumofnum)̥
+
+
+4.	Write a R program to create a vector which contains 10 random integer values between -50 and +50.
+
+randvec=sample(-50:50,10,replace=TRUE)
+cat(randvec)
+
+
+
+5.	Write a R program to create three vectors numeric data, character data and logical data. Display the content of the vectors and their type.
+
+
+vec1=c(1,2,3)
+vec2=c("r","Raju")
+vec3=c(TRUE,FALSE,TRUE)
+cat(typeof(vec1),vec1)
+cat(class(vec2),vec2)
+cat(class(vec3),vec3)
+
+
+
+6.	Write a R program to find the maximum and the minimum value of a given vector.
+
+vec1=c(1,2,3,4,10)
+cat("Maximum is :",max(vec1))
+cat("Minimum is :",min(vec1))
+
+List
+
+
+1.	Write a R program to create a list of elements using vectors, matrices and a functions. Print the content of the list.
+
+vec=c(1,2,3)
+mat=matrix(1:6,nrow=2)
+fun=function(x) x * 2
+list1=list(vec,mat,fun)
+print(list1)
+
+
+2.	Write a R program to create a list of random numbers in normal distribution and count occurrences of each value.
+
+randomnum=rnorm(30,mean = 0,sd=1)
+occurance=table(randomnum)
+print(occurance)
+
+
+3.	How to add Key Value Pair to List in R ?
+
+list1=list(name="raju",age=20)
+list1$city="kuppam"
+print(list1)
+
+
+4.	Access Index Names of List Using lapply Function in R
+
+list1=list(name="Raju",city="kuppam",age=20)
+newlist=lapply(list1,names)
+print(newlist)
+
+
+Matrix
+
+
+1.	Write a R program to create three vectors a,b,c with 3 integers. Combine the three vectors to become a 3×3 matrix where each column represents a vector. Print the content of the matrix.
+
+a=c(1,2,3)
+b=c(4,5,6)
+c=c(7,8,9)
+mat=matrix(c(a,b,c),ncol=3,byrow=TRUE)
+print(mat)
+
+2.	Write a R program to create a 5 x 4 matrix , 3 x 3 matrix with labels and fill the matrix by rows and 2 × 2 matrix with labels and fill the matrix by columns.
+
+mat54=matrix(1:20,nrow=5,ncol=4,byrow=TRUE)
+rownames(mat54)=c("row1","row2","row3","row4","row5")
+colnames(mat54)=c("col1","col2","col3","col4")
+print(mat54)
+
+mat33=matrix(1:9,nrow=3,ncol=3)
+rownames(mat33)=c("r1","r2","r3")
+colnames(mat33)=c("c1","c2","c3")
+print(mat33)
+
+mat22=matrix(1:4,nrow=2,ncol=2)
+rownames(mat22)=c("r1","r2")
+colnames(mat22)=c("c1","c2")
+print(mat22)
+
+
+3.	Multiply a matrix by its transpose while ignoring missing values in R
+
+A <- matrix(c(1,NA,3,4), nrow = 2, ncol = 2)
+print(A)
+print(t(A))
+C <- A %*% t(A)
+print(C)
+
+
+4.	Write a R program to find the power of a matrix .
+
+mat =̥ matrix(1:4, nrow = 2)
+power = mat ^ 1
+print(power)
+
+5.	Write a R program to fill an empty matrix in R
+
+emptymatrix <- matrix(nrow = 3, ncol = 3)
+print(emptymatrix)
+filledmatrix <- matrix(1:9,nrow=3)
+print(filledmatrix)
+
+
+
+Factors
+
+
+1.	Write a R program to find the factors of a given number.
+
+number <- 120
+factors <- factor(number)
+print(factors)
+
+
+2.	Write a R program  to change the order of levels of a factor.
+
+myfactor=factor(c("low","high","medium","low"))
+ordfact=factor(myfactor,levels = c("low","high","medium"))
+print(ordfact)
+
+
+
+3.	Write a R program to convert two given factors into a single factor.  
+
+factor1 <- factor(c("A", "B", "C", "A"))
+factor2 <- factor(c("X", "Y", "X", "Z"))
+combined_factor <- factor(paste(factor1, factor2))
+print(combined_factor)
+
+
+Functions
+
+
+1.	Write a R program to get the first 10 Fibonacci numbers.
+
+fibonacci <- numeric(10)
+fibonacci[1] <- 0
+fibonacci[2] <- 1
+for (i in 3:10) {
+  fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]
+}
+print(fibonacci)
+
+2.	Write a R program to get all prime numbers up to a given number (based on the sieve of Eratosthenes).
+
+get_prime_numbers <- function(n) {
+  primes <- rep(TRUE, n)
+  primes[1:2] <- FALSE
+  for (p in 2:sqrt(n)) {
+    if (primes[p]) {
+      for (i in seq(p^2, n, p)) {
+        primes[i] <- FALSE
+      }
+    }
+  }
+  return(which(primes))
+}
+n <- 100
+prime_numbers <- get_prime_numbers(n)
+print(paste(prime_numbers,collapse = " ,"))
+
+
+
+3.	Write a R program to print the numbers from 1 to 100 and print "Fizz" for multiples of 3, print "Buzz" for multiples of 5, and print "FizzBuzz" for multiples of both.
+
+for (i in 1:100) {
+  if (i %% 3 == 0 && i %% 5 == 0) {
+    print("FizzBuzz")
+  } else if (i %% 3 == 0) {
+    print("Fizz")
+  } else if (i %% 5 == 0) {
+    print("Buzz")
+  } else {
+    print(i)
+  }
+}
+
+
+4.	Write a R program to find the number of occurrence of a character in an string. 
+
+text <- "This is a sample text with some sample words."
+tar= "s"
+count = sum(charToRaw(text) == charToRaw(tar))
+print(count)
+
+
+5.	Write a R program to extract first 10 english letter in lower case and last 10 letters in upper case and extract letters between 22nd to 24th letters in upper case.
+
+letters_lower <- letters[1:10]
+letters_upper <- LETTERS[17:26]
+letters_between <- toupper(letters[22:24])
+
+print(letters_lower)
+print(letters_upper)
+print(letters_between)
+
+
+
+6.	Write a R program to get the unique elements of a given string and unique numbers of vector.
+
+string <- "abracadabra"
+strsp=unique(unlist(strsplit(string,"")))
+vector <- c(1, 2, 2, 3, 4, 4, 5)
+unique_numbers <- unique(vector)
+
+print(unique_numbers)
+print(strsp)
+
+
+Array
+
+
+1.	Write a R program to create an array, passing in a vector of values and a vector of dimensions. Also provide names for each dimension
+
+values=c(1,2,3,4,5,6)
+dims=c(2,3)
+dimnames=list(c("r1","r2"),c("c1","c2","c3"))
+ary=array(values,dims,dimnames = dimnames)
+print(ary)
+
+
+
+2.	Write a R program to create an array with three columns, three rows, and two "tables", taking two  vectors as input to the array.  Print the array.
+
+data1 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+data2 <- c(10, 11, 12, 13, 14, 15, 16, 17, 18)
+array_dims <- c(3, 3, 2)
+my_array <- array(c(data1, data2), dim = array_dims)
+print(my_array)
+
+
+3.	Write a R program to create an 3 dimensional array of 24 elements using the dim() function.
+
+my_array <- array(1:24, dim = c(3, 4, 2))
+print(my_array)
